@@ -1,6 +1,6 @@
 # saneForth
 
-The most powerful machine client that connects over serial to a Volatco board. This branch is for `sF386/UNIX`, `aF3` for UNIX.
+The most powerful machine client that connects over serial to a Volatco board. This branch is for `sF386/UNIX`.
 
 ## Running the aF3 system in Debian Linux
 
