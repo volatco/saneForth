@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# sf xxx runs executable xxx in an xterm
+# afk xxx runs executable xxx in a konsole
 #
 svstty=$(stty -g)
 stty -icanon -echo -istrip -opost -onlcr -echoe -echok min 1
