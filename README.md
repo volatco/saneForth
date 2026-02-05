@@ -6,6 +6,8 @@ The machine client that connects over serial to a Volatco board. This branch is 
 
 This is performed on a KDE Plasma desktop using Konsole.
 
+Run `chmod 755 sf6a0.exe`.
+
 _Connecting to Volatco to develop in polyForth_
 
 In order for a Volatco computer to respond correctly to a common Debian desktop, a special terminal needs to be formatted.
