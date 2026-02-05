@@ -4,7 +4,7 @@ The most powerful machine client that connects over serial to a Volatco board. T
 
 ## Running the aF3 system in Debian Linux
 
-This is performed on a KDE Plasma desktop using Konsole.
+This is performed on KDE Plasma desktop using Konsole.
 
 Run `chmod 755 sf6a0.exe`.
 
