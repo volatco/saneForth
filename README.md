@@ -1,8 +1,6 @@
 # saneForth
 
-The machine client that connects over serial to a Volatco board. This branch is for sF386/UNIX, aF3 for UNIX.
-
-Note this code is Alpha.
+The machine client that connects over serial to a Volatco board. This branch is for `sF386/UNIX`, `aF3` for UNIX.
 
 ## Running the aF3 systems in Debian Linux
 
