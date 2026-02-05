@@ -1,8 +1,8 @@
 # saneForth
 
-The machine client that connects over serial to a Volatco board. This branch is for `sF386/UNIX`, `aF3` for UNIX.
+The most powerful machine client that connects over serial to a Volatco board. This branch is for `sF386/UNIX`, `aF3` for UNIX.
 
-## Running the aF3 systems in Debian Linux
+## Running the aF3 system in Debian Linux
 
 This is performed on a KDE Plasma desktop using Konsole.
 
@@ -25,20 +25,20 @@ In order for a Volatco computer to respond correctly to a common Debian desktop,
 11. Type `ctrl-X` to leave polyForth. If you don't know, type `WHO`.
 12. Type `EMPTY` to logout.
 
-### Building the executable
+### Building an executable
 
 Before being able to do this, you will need to be completely out of AFORTH; you can run the command `GOLD`.
 
 1. `COMPILER LOAD`
 2. `UNIX LOAD`
 3. `801 LOAD`
-4. upload <name of the file>, we ran `upload volatco.exe`.
+4. upload <name of the file>, for example `upload volatco.exe`.
 
 _Extra things to do_
 
 Explore the beauty of a self-replicating system.
 
-### Things to investigate
+### Details to investigate
 
 * We see that the tty enumeration most-times will select `ttyUSB0` for the FTDI chips in the DSD device, but also can sometimes assign it `ttyUSB1`. Is there a way to minimize confusion and lock the assignment?
     - Because of this, 4THDISK has a change to block 792, line 11 where Port is 0.
