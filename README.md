@@ -4,9 +4,9 @@ The machine client that connects over serial to a Volatco board. This branch is 
 
 Note this code is Alpha.
 
-## Installing aF3 systems in Linux
+## Running the aF3 systems in Debian Linux
 
-Dependencies are on KDE Konsole and Plasma desktop.
+This is performed on a KDE Plasma desktop using Konsole.
 
 Unzip to make  ~/af3
 
@@ -16,7 +16,9 @@ Copy `~/af3/sf.desktop` (icon) to the desktop. This icon, when activated, should
 
 ## Connecting to Volatco to develop in polyForth
 
-1. Connect the profile in konsole: "Settings..Profile", create a new profile called saneForth-GA144A12. Add the initial directory to your machine's path plus: "../af3/sfux"; and set the command with this path as: "af3/sfux/afk sf6a0.exe". Save the profile as default as this will be the easist way to spawn a new terminal. Save the profile.
+In order for a Volatco computer to respond correctly to a common Debian desktop, a special terminal needs to be formatted.
+
+1. Open konsole: "Settings..Profile", create a new profile called `saneForth-GA144A12`. Add the initial directory to your machine's path plus: `../af3/sfux`; and set the command with this path as: `af3/sfux/afk sf6a0.exe`. Save the profile as default as this will be the easist way to spawn a new terminal. Set "Initial terminal size" to 80 columns by 25 rows. Deselect "Start in the same directory as current session". Save the profile.
 2. Run `chmod 775 afk`.
 3. Open a new konsole window.
 4. When you see `hi`, type `HI`.
