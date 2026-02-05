@@ -34,6 +34,10 @@ Before being able to do this, you will need to be completely out of AFORTH; you 
 3. `801 LOAD`
 4. upload <name of the file>, we ran `upload volatco.exe`.
 
+_Extra things to do_
+
+Explore the beauty of a self-replicating system.
+
 ### Things to investigate
 
 * We see that the tty enumeration most-times will select `ttyUSB0` for the FTDI chips in the DSD device, but also can sometimes assign it `ttyUSB1`. Is there a way to minimize confusion and lock the assignment?
