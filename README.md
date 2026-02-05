@@ -6,8 +6,7 @@ Note this code is Alpha.
 
 ## Installing aF3 systems in Linux
 
-Dependencies on KDE Konsole and Plasma desktop 
-================================================
+Dependencies are on KDE Konsole and Plasma desktop.
 
 Unzip to make  ~/af3
 
