@@ -16,6 +16,6 @@ Copy `~/af3/sf.desktop` (icon) to the desktop. This icon, when activated, should
 
 ### Things to investigate
 
-* We see that the tty enumeration most-times will select USB0 for the FTDI, but also can sometimes assign it USB1. Is there a way to minimize confusion and lock the assignment?
+* We see that the tty enumeration most-times will select `ttyUSB0` for the FTDI chips in the DSD device, but also can sometimes assign it `ttyUSB1`. Is there a way to minimize confusion and lock the assignment?
     - Because of this, 4THDISK has a change to block 792, line 11 where Port is 0.
     - Visualization of this can be done by: `dmesg | grep tty`.
