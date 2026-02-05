@@ -8,13 +8,7 @@ Note this code is Alpha.
 
 This is performed on a KDE Plasma desktop using Konsole.
 
-Unzip to make  ~/af3
-
-Copy saneFORTH-G144A12.profile into `~/.local./share/konsole` which hopefully can be made usable without some sort of registration. This profile configures the konsole and conditions it to invoke the correct script with the correct working directory.
-
-Copy `~/af3/sf.desktop` (icon) to the desktop. This icon, when activated, should invoke konsole using the above profile which should cause it to start saneFORTH at 14 points, turn the screen blue with white characters, size the screen as 80x25, configure with stty to allow direct reading of one character at a time from keyboard, and sF should display an ID line and say `hi`. You respond to this by typing `HI`.
-
-## Connecting to Volatco to develop in polyForth
+_Connecting to Volatco to develop in polyForth_
 
 In order for a Volatco computer to respond correctly to a common Debian desktop, a special terminal needs to be formatted.
 
