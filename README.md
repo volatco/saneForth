@@ -17,7 +17,7 @@ In order for a Volatco computer to respond correctly to a common Debian desktop,
 5. Type `SERIAL LOAD`.
 6. Type `PLUG`.
 7. Hit 'enter'.
-8. Breifly connect a jumper across J4.
+8. Breifly connect the provided insulated jumper across `J4`.
 9. Hit 'space'.
 10. If successful, you will see the words: `G144A12 polyFORTH development system`.
 
