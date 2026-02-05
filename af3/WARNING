@@ -1,0 +1,11 @@
+
+WARNING:  My particular instance of Debian Trixie 
+  has a behavior in its ld-linux.so.2 whereby there
+  is a hole in my 16 MB .bss area where there is no
+  memory mapped.  The reason for this is unknown, so
+  I also do not know if it will behave the same way
+  on another Debian instance than this Oracle Virtual
+  box VM I'm running it in, let alone some other linux
+  system.  Should be tried on all available systems.
+
+
