@@ -11,7 +11,7 @@ _Connecting to Volatco to develop in polyForth_
 In order for a Volatco computer to respond correctly to a common Debian desktop, a special terminal needs to be formatted.
 
 1. Open konsole: "Settings..Profile", create a new profile called `saneForth-GA144A12`. Add the initial directory to your machine's path plus: `../af3/sfux`; and set the command with this path as: `af3/sfux/afk sf6a0.exe`. Save the profile as default as this will be the easist way to spawn a new terminal. Set "Initial terminal size" to 80 columns by 25 rows. Deselect "Start in the same directory as current session". Save the profile.
-2. Run `chmod 775 afk`.
+2. Run `chmod 755 afk`.
 3. Open a new konsole window.
 4. When you see `hi`, type `HI`.
 5. Type `SERIAL LOAD`.
