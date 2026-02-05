@@ -22,7 +22,8 @@ In order for a Volatco computer to respond correctly to a common Debian desktop,
 8. Breifly connect the provided insulated jumper across `J4`.
 9. Hit 'space'.
 10. If successful, you will see the words: `G144A12 polyFORTH development system`.
-11. Type `EMPTY` to logout.
+11. Type `ctrl-x` to leave polyForth. If you don't know, type `WHO`.
+12. Type `EMPTY` to logout.
 
 ### Things to investigate
 
