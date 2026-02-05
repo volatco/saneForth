@@ -25,6 +25,15 @@ In order for a Volatco computer to respond correctly to a common Debian desktop,
 11. Type `ctrl-X` to leave polyForth. If you don't know, type `WHO`.
 12. Type `EMPTY` to logout.
 
+### Building the executable
+
+Before being able to do this, you will need to be completely out of AFORTH; you can run the command `GOLD`.
+
+1. `COMPILER LOAD`
+2. `UNIX LOAD`
+3. `801 LOAD`
+4. upload <name of the file>, we ran `upload volatco.exe`.
+
 ### Things to investigate
 
 * We see that the tty enumeration most-times will select `ttyUSB0` for the FTDI chips in the DSD device, but also can sometimes assign it `ttyUSB1`. Is there a way to minimize confusion and lock the assignment?
