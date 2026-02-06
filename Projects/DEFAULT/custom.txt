@@ -1,0 +1,28 @@
+( Customize aF3 for Default project.)
+( All files are in af3/Projects/DEFAULT
+  or EVB002/Projects/DEFAULT.)
+
+EMPTY  ( 4800 CONSTANT PROJECT)
+   : PROJDIR ( - a n)   S" ../projects/DEFAULT/" ;
+   ( EVB002 #201)
+     CREATE A-COM  10 ,  CREATE A-BPS 921600 ,
+     CREATE B-COM  16 ,  CREATE B-BPS 921600 ,
+     CREATE C-COM  17 ,  CREATE C-BPS 921600 ,
+FORTH GILD
+
+4740  4740  u.O_RDWR u.O_BINARY + 1  (  4800 Project)
+     CALLED" ../projects/DEFAULT/DEFAULT.src"
+4740  4740  u.O_RDWR u.O_BINARY + 5  ( 28800 Projback)
+     CALLED" ../projects/DEFAULT/DEFAULT-back.src"
+4800  4800  u.O_RDWR u.O_BINARY + 9  ( 52800 Chip's Proj)
+     CALLED" ../projects/DEFAULT/DEFAULT.src"
+
+4800  4800  u.O_RDWR u.O_BINARY + 11  ( Object code for project)
+     CALLED" ../projects/DEFAULT/OBJ-DEFAULT"
+
+4800 24000  u.O_RDWR u.O_BINARY + 14  ( Concordance)
+     CALLED" ../projects/DEFAULT/conc"
+
+( Enable)  4 8 +WRT
+
+AFORTH

@@ -1,0 +1,7 @@
+// The contents of this file are from a provisioning session to familiarize the user with the process.
+// What follows is the result of double-clicking the "arrayForth3" shortcut in the Projects/VOLATCO folder.
+
+HOST LOAD
+TALK
+6 AUTOTEST
+7 AUTOTEST

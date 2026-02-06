@@ -1,0 +1,85 @@
+// The contents of this file are from a provisioning session to familiarize the user with the process.
+// What follows is the result of double-clicking the "arrayForth3" shortcut in the Projects/VOLATCO folder.
+
+   A T H E N A    i386/NT  saneFORTH Development System
+   Copyrighted (c) software, see block 0 for Notices.
+----------------------------------------------------------------
+   Integrated arrayForth-3 03d environment.  Redacted, no GLOW.
+----------------------------------------------------------------
+SYSTEM              Displays this system-wide help screen.
+UTILITIES           Displays the major utilities available.
+DISKS               Displays current major disk assignments.
+AFORTH              Compiles or selects arrayForth environment.
+
+RELOAD   HI         Reloads the entire system WARMLY.
+mm/dd/yy NOW        Sets today's date.
+hh:mm HOURS         Sets the current time.
+
+
+Today's date is 10/02/25  Time 17:01:51
+AFORTH in 1560 hides 11
+HELP in 1560 hides 9
+
+
+
+arrayForth-3 Help for sF/Win32 system
+CONFIG LIST  Shows main configuration block, editable
+
+HOST LOAD     Compile External IDE for host port
+TARGET LOAD   Compile External IDE for target port
+BRIDGE LOAD   Compile 2-chip External IDE for host port
+
+EXAMINE LOAD  Compile tools for examining and comparing bins
+STREAMER LOAD Compile tools for building port executable streams
+SOFTSIM LOAD  Compile the software level simulator
+
+SERIAL LOAD   Compile terminal emulator for talking to pF/144
+
+1662, 5   Load to serial boot pF target system 2-chip, 1-chip
+1668, 71  Load to make Flash boot for " "  2-chip, 1-chip
+ HOST LOAD
+ACT in 1620 hides 1590
+/STR in 1626 hides 101
+BAUD in 1627 hides 103
+RD in 1640 hides 1627
+R@ in 1635 hides 0
+RIGHT in 664 hides 433
+-ASM in 1637 hides 1593
+TALK in 1637 hides 1628
+  2  709    0 708
+  1  608    0 708
+  0  707    0 708  <--- SELECTEDok
+TALK
+  2  709    1 709
+  1  608    1 608
+  0  707    1 707  <--- SELECTEDok
+UPD
+     67     21 131072     67
+      0      0     67      0     21     21 ok
+?RAM
+  0   23306  78848   40749  79017   79017  23306   78853  40485
+  8   79017  79017   23306  78858   38229  23306   78861  38229
+ 16   23474  78864   18610      9    6773  79017   22024      0
+ 24  128017 148261   79017  79017   79017  79017   79017  79017
+ 32   79017  79017   79017  79017   79017  79017   79017  79017
+ 40   79017  79017   79017  79017   79017  79017   79017  79017
+ 48   79017  79017   79017  79017   79017  79017  150955  48427
+ 56   19378  41765  154554  23154   18578     63  232114   6258 ok
+0 0 HOOK
+  2  709    1 709
+  1  608    1 608
+  0  707   15 0  <--- SELECTEDok
+UPD
+ 260693 131072 157286 157286
+ 262143 157286 104857 157286 157286 131072 ok
+HEX ok
+?RAM
+  0    1A02   BEB2   25B68  114A9   1140E  39307   27B9D  3B555
+  8    4397  15555    5A0E   BA0A   38FFA  21705   19419   48B2
+ 10       0   5D2A     15D   4AB2    ADB2  13408    5608      0
+ 18   1F411  24325   134A9  134A9   134A9  134A9   134A9  134A9
+ 20   134A9  134A9   134A9  134A9   134A9  134A9   134A9  134A9
+ 28   134A9  134A9   134A9  134A9   134A9  134A9   134A9  134A9
+ 30   134A9  134A9   134A9  134A9   134A9  134A9   24DAB   BD2B
+ 38    4BB2   A325   25BBA   5A72    4892     3F   38AB2   1872 ok
+_
