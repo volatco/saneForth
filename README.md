@@ -43,3 +43,9 @@ Explore the beauty of a self-replicating system.
 * We see that the tty enumeration most-times will select `ttyUSB0` for the FTDI chips in the DSD device, but also can sometimes assign it `ttyUSB1`. Is there a way to minimize confusion and lock the assignment?
     - Because of this, 4THDISK has a change to block 792, line 11 where Port is 0.
     - Visualization of this can be done by: `dmesg | grep tty`.
+
+### The reset pin header
+
+The 1x2 header `J4` is ordinarily done by temporarily shorting the pins with an external wire. Since this is a crude method, in the 'designs' folder is a reset holder, push-button switch, and JST 2.54mm. The complete appratus with a Volatco in case and the USB FTDI is shown here.
+
+![full-setup](/designs/rst-switch.jpg)
