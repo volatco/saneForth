@@ -19,9 +19,11 @@ In order for a Volatco computer to respond correctly to a common Debian desktop,
 5. Type `SERIAL LOAD`.
 6. Type `PLUG`.
 7. Hit 'enter'.
-8. Breifly connect the provided insulated jumper across `J4`.
+8. BrIefly connect the provided insulated jumper across `J4`.
+    - Better yet, use the RST button system.
 9. Hit 'space'.
 10. If successful, you will see the words: `G144A12 polyFORTH development system`.
+11. Type `20 DRIVE HI` to load the system.
 11. Type `ctrl-X` to leave polyForth. If you don't know, type `WHO`.
 12. Type `EMPTY` to logout.
 
