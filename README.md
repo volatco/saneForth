@@ -22,31 +22,31 @@ Ubuntu/Debian:
 
 ### Installation
 
-Clone the repo into your home directory
+Clone the repo into your home directory:
 
 `git clone https://github.com/volatco/saneForth.git`
 
 
-Change directory to location of saneForth executable file
+Change directory to location of saneForth executable file:
 
 `cd saneForth/af3/sfux/`
 
-Set saneForth executable file as executable
+Set saneForth executable file as executable:
 
 `chmod 755 sf6a0.exe`
 
-Run saneForth
+Run saneForth:
 
 `./sf6a0.exe`
 
-When you see `hi`, type `HI`
+When you see `hi`, type `HI`:
 
 ```
 sF386/UX.6a0 01/18/26
 hi HI
 ```
 
-When you see `A T H E N A`, type `WHO` for a quick confirmation
+When you see `A T H E N A`, type `WHO` for a quick confirmation:
 
 ```
    A T H E N A    i386/NT  saneFORTH Development System
@@ -67,7 +67,7 @@ hh:mm HOURS         Sets the current time.
 Today's date is 2/18/26  Time 01:35:37 ok
 ```
 
-Then it should respond this
+Then it should respond this:
 
 ```
    A T H E N A    i386/NT  saneFORTH Development System
