@@ -14,7 +14,7 @@ sudo dpkg --add-architecture i386
 sudo apt update
 ```
 
-Install 32bit libraries:
+_Install 32-bit libraries_
 
 Ubuntu/Debian:
 
