@@ -6,56 +6,38 @@ The most powerful machine client that connects over serial to a Volatco board. T
 
 ### Preparation
 
-Configure system to install 32-bit (i386) packages
+Configure system to install 32-bit (i386) packages:
 
-Ubuntu:
+Ubuntu/Debian:
 ```
 sudo dpkg --add-architecture i386
 sudo apt update
 ```
 
-KDE: 
-```
+Install 32bit libraries:
 
-```
+Ubuntu/Debian:
 
-Install 32bit libraries
-
-Ubuntu:
-```
-sudo apt install libncurses6:i386 libc6:i386 libstdc++6:i386
-```
-
-KDE: 
-```
-
-```
+`sudo apt install libncurses6:i386 libc6:i386 libstdc++6:i386`
 
 ### Installation
 
 Clone the repo into your home directory
 
-```
-git clone https://github.com/volatco/saneForth.git
-```
+`git clone https://github.com/volatco/saneForth.git`
+
 
 Change directory to location of saneForth executable file
 
-```
-cd saneForth/af3/sfux/
-```
+`cd saneForth/af3/sfux/`
 
 Set saneForth executable file as executable
 
-```
-chmod 755 sf6a0.exe
-```
+`chmod 755 sf6a0.exe`
 
 Run saneForth
 
-```
-./sf6a0.exe
-```
+`./sf6a0.exe`
 
 When you see `hi`, type `HI`
 
