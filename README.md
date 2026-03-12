@@ -133,3 +133,14 @@ Explore the beauty of a self-replicating system.
 The 1x2 header `J4` is ordinarily done by temporarily shorting the pins with an external wire. Since this is a crude method, in the 'designs' folder is a reset holder, push-button switch, and JST 2.54mm. The complete appratus with a Volatco in case and the USB FTDI is shown here.
 
 ![full-setup](/designs/rst-switch.jpg)
+
+### GPIO exhibit
+
+* Use the startup routine in the readme of the saneForth repo.
+* Start with pin `715.17`. Set the oscilloscope channel 1 to `J10`, pin 2 with ground on pin 1.
+	- Note that pin 1 is at the top right looking at the board in normal orientation. Pin 2 is at the immediate left.
+* Run: `HI`, `AFORTH`, `SERIAL LOAD PLUG`, reset the board.
+* 1581 `LIST` to see wht the program is doing to the pin.
+* 1581 `LOAD` to run the program.
+	- `1581 LOAD STREAMER ?`
+* Snorkel and ganglia next.
