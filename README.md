@@ -143,3 +143,10 @@ The 1x2 header `J4` is ordinarily done by temporarily shorting the pins with an 
 * 1581 `LOAD` to run the program.
 	- `1581 LOAD STREAMER ?`
 * Snorkel and ganglia next.
+
+#### Visual prototype proof
+
+* Setup with a ~1v8 LED and a 47-ohm resistor.
+* Run `1581 LOAD` that will oscillate the pin once a second.
+* Change the codeblock such that the program will blink twice a second.
+* Rerun `1581 LOAD`.
