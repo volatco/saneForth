@@ -1,9 +1,12 @@
 SHELL := /usr/bin/env bash
 
-.PHONY: check-env run connect
+.PHONY: check-env doctor run connect
 
 check-env:
 	./scripts/check-env.sh
+
+doctor:
+	./scripts/doctor.sh
 
 run:
 	./scripts/run-sf.sh

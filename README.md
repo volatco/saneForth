@@ -37,8 +37,17 @@ Ubuntu/Debian:
 ### Quick commands (recommended)
 
 - `make check-env` verifies serial visibility, `dialout`, and required i386 packages.
+- `make doctor` runs diagnostics (`check-env`, tty messages, ModemManager hint).
 - `make run` launches saneForth from `af3/sfux`.
 - `make connect` launches saneForth and prints the Volatco integration checklist.
+
+### Pre-test checklist (when batteries are charged)
+
+1. Connect board + serial adapter and power on.
+2. Run `make doctor` and confirm no hard blockers.
+3. Run `make connect`.
+4. In saneForth follow prompts: `HI`, `DISKS`, `SERIAL LOAD`, `0 PORT`/`1 PORT`, `PLUG`, reset, space.
+5. On banner, run `20 DRIVE HI`.
 
 ### Installation
 
