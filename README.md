@@ -22,6 +22,10 @@ Available helper commands:
 - `make connect` launches saneForth and prints the Volatco connection guide.
 - `make serial-harden` prints exact udev hardening steps for Port_B FTDI.
 
+## Modernization exploration
+
+- Two-week Go exploration plan: `docs/go-exploration-plan.md`
+
 ### Preparation
 
 Configure system to install 32-bit (i386) packages:
