@@ -1,0 +1,16 @@
+\ BLOCK 4800 VOLATCO LED BLINK                              
+\ POWER J1:1=GND 2=1V8 3=GND 4=1V8                              
+\ LED: J13-7(10705.1)->R->ANODE, CATHODE->J13-9(GND)            
+DECIMAL                                                         
+7 CONSTANT LED-PIN                                              
+: PIN-OUTPUT ( pin -- ) GPIO-OUTPUT ;                           
+: PIN-HIGH   ( pin -- ) GPIO-HIGH ;                             
+: PIN-LOW    ( pin -- ) GPIO-LOW ;                              
+: DELAY-MS   ( u -- ) MS ;                                      
+: LED-ON     ( -- ) LED-PIN PIN-HIGH ;                          
+: LED-OFF    ( -- ) LED-PIN PIN-LOW ;                           
+: INIT-LED   ( -- ) LED-PIN PIN-OUTPUT ;                        
+: BLINK-1SEC ( -- )                                             
+  INIT-LED BEGIN                                                
+    LED-OFF 500 DELAY-MS  LED-ON 500 DELAY-MS                   
+  AGAIN ;                                                       

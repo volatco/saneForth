@@ -63,6 +63,23 @@ To reduce garbled serial behavior on this bench:
 3. Re-plug adapter or trigger udev as printed.
 4. Verify stable alias `/dev/volatco-port-b` and low latency timer.
 
+If your fan spins up right after plugging serial, ModemManager is usually probing the new tty.
+Apply the Volatco udev rule so this adapter is ignored by ModemManager:
+
+1. Print the exact commands:
+   - `make serial-harden`
+2. Apply rules:
+   - `sudo cp udev/99-volatco-ftdi.rules /etc/udev/rules.d/99-volatco-ftdi.rules`
+   - `sudo udevadm control --reload-rules`
+   - `sudo udevadm trigger --subsystem-match=tty --subsystem-match=usb-serial`
+   - `sudo systemctl restart ModemManager`
+3. Verify:
+   - `ls -l /dev/volatco-port-b /dev/serial/by-id/*VOLATCO_Port_B*`
+   - `cat /sys/bus/usb-serial/devices/ttyUSB*/latency_timer`
+4. Optional quick check while plugging:
+   - `top`
+   - `dmesg -w`
+
 ### Known Good Configuration (Port_B bench)
 
 This setup has been verified working:
