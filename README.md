@@ -24,6 +24,7 @@ Ubuntu/Debian:
 
 - `sf6a0.exe` is a 32-bit i386 Linux binary and requires 32-bit userspace libraries.
 - This repo uses FORTH block media (`.src`, `.blk`, `Project`, `4THDISK`) as primary source artifacts.
+- Running saneForth updates stateful media in `af3/sfux` and `Projects/*`; this is expected and will show as a dirty Git workspace.
 - There is a Debian Trixie loader note in `af3/WARNING` about a possible `.bss` mapping hole on at least one VM setup.
 - USB serial device assignment may vary (`ttyUSB0` vs `ttyUSB1`), which can require local port adjustments.
 
