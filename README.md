@@ -2,13 +2,24 @@
 
 The most powerful machine client that connects over serial to a Volatco board. This branch is for `sF386/UNIX`.
 
-## Branch policy
+## Quick start (recommended)
 
-- `main` is kept as the historical/legacy baseline.
-- `chore/minimal-modernization` is the ongoing modern tooling/docs branch.
-- Modernization work is intended to stay on the modernization branch unless maintainers explicitly choose otherwise.
+1. Run `make doctor`.
+2. If checks are acceptable, run `make connect`.
+3. In saneForth follow prompts:
+   - `HI`
+   - `DISKS` (confirm `../projects/VOLATCO/...`)
+   - `SERIAL LOAD`
+   - `0 PORT` or `1 PORT`
+   - `PLUG`, then Enter + reset + Space
+4. On `G144A12 polyFORTH development system`, run `20 DRIVE HI`.
 
-## Running the aF3 system in Debian Linux
+Available helper commands:
+
+- `make check-env` verifies serial visibility, `dialout`, and i386 packages.
+- `make doctor` runs diagnostics before connection attempts.
+- `make run` launches saneForth from `af3/sfux`.
+- `make connect` launches saneForth and prints the Volatco connection guide.
 
 ### Preparation
 
@@ -34,13 +45,6 @@ Ubuntu/Debian:
 - There is a Debian Trixie loader note in `af3/WARNING` about a possible `.bss` mapping hole on at least one VM setup.
 - USB serial device assignment may vary (`ttyUSB0` vs `ttyUSB1`), which can require local port adjustments.
 
-### Quick commands (recommended)
-
-- `make check-env` verifies serial visibility, `dialout`, and required i386 packages.
-- `make doctor` runs diagnostics (`check-env`, tty messages, ModemManager hint).
-- `make run` launches saneForth from `af3/sfux`.
-- `make connect` launches saneForth and prints the Volatco integration checklist.
-
 ### Pre-test checklist (when batteries are charged)
 
 1. Connect board + serial adapter and power on.
@@ -49,7 +53,7 @@ Ubuntu/Debian:
 4. In saneForth follow prompts: `HI`, `DISKS`, `SERIAL LOAD`, `0 PORT`/`1 PORT`, `PLUG`, reset, space.
 5. On banner, run `20 DRIVE HI`.
 
-### Installation
+### Manual installation and launch
 
 Clone the repo into your home directory:
 
@@ -119,24 +123,20 @@ WHO
 WHO sF on x86.  ok
 ```
 
-### Connecting to Volatco to develop in polyForth
+### Manual Konsole profile setup (alternative path)
 
-In order for a Volatco computer to respond correctly to a common Debian desktop, a special terminal needs to be formatted.
+Use this if you prefer launching from a dedicated Konsole profile.
 
-1. Open konsole: "Settings..Create New Profile...", of one called `saneForth-GA144A12`. Add the initial directory to your machine's path plus: `../af3/sfux`; and set the command with this path as: `af3/sfux/afk sf6a0.exe`. Save the profile as default as this will be the easist way to spawn a new terminal. Set "Initial terminal size" to 80 columns by 25 rows. Deselect "Start in the same directory as current session". Save the profile.
-2. Run `chmod 755 afk`.
-3. Open a new konsole window.
-4. When you see `hi`, type `HI`.
-5. Type `SERIAL LOAD`.
-6. Type `PLUG`.
-7. Hit 'enter'.
-8. BrIefly connect the provided insulated jumper across `J4`.
-    - Better yet, use the RST button system.
-9. Hit 'space'.
-10. If successful, you will see the words: `G144A12 polyFORTH development system`.
-11. Type `20 DRIVE HI` to load the system.
-11. Type `ctrl-X` to leave polyForth. If you don't know, type `WHO`.
-12. Type `EMPTY` to logout.
+1. Open Konsole and create a new profile named `saneFORTH-G144A12`.
+2. Set initial directory to `<repo>/af3/sfux`.
+3. Set command to `<repo>/af3/sfux/afk sf6a0.exe`.
+4. Set terminal size to 80 columns by 25 rows.
+5. Deselect "Start in the same directory as current session".
+6. Save the profile.
+7. Run `chmod 755 af3/sfux/afk`.
+8. Open a new Konsole window with that profile.
+9. At `hi`, type `HI`.
+10. Continue with the fast path below (`DISKS`, `SERIAL LOAD`, `0 PORT`/`1 PORT`, `PLUG`).
 
 ### Fast path: IDE to Volatco board
 
@@ -157,6 +157,23 @@ If there is no target banner:
 1. Run `id` and confirm your user is in `dialout`.
 2. Check current serial assignment with `dmesg | grep tty`.
 3. Retry `SERIAL LOAD`, `0 PORT`, `PLUG`, then reset + space timing.
+
+### Legacy polyForth sequence (manual)
+
+This is the traditional operator sequence after launch:
+
+1. When you see `hi`, type `HI`.
+2. Run `chmod 755 afk`.
+3. Type `SERIAL LOAD`.
+4. Type `PLUG`.
+5. Hit Enter.
+6. Briefly connect the provided insulated jumper across `J4`.
+    - Better yet, use the RST button system.
+7. Hit Space.
+8. If successful, you will see: `G144A12 polyFORTH development system`.
+9. Type `20 DRIVE HI` to load the system.
+10. Type `ctrl-X` to leave polyForth. If you do not know where you are, type `WHO`.
+11. Type `EMPTY` to logout.
 
 ### Building an executable
 
