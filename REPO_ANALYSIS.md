@@ -86,7 +86,7 @@ This aligns with project comments stating “These 4800 blocks are visible to bo
 
 - `*.src` / `Project` style files present as fixed-length block text (classic FORTH block media, not line-oriented source).
 - Some media (`pFDISK.blk`) are tokenized/binary dictionary data.
-- `4THDISK` contains plain FORTH text in specific blocks (example: block 792 in README discussion).
+- `4THDISK` contains plain FORTH text in specific blocks (for example, block 792 in README discussion).
 
 ## How Project Selection Works
 

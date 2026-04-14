@@ -15,9 +15,9 @@
 
 ## Key files
 
-- `README.md`: primary operator guide (runtime startup, serial workflow, provisioning steps).
-- `af3/WARNING`: platform-specific loader caveat observed on Debian Trixie VM.
-- `Projects/*/custom.txt`: project-specific media and serial mapping definitions.
+- `README.md`: Primary operator guide (runtime startup, serial workflow, provisioning steps).
+- `af3/WARNING`: Platform-specific loader caveat observed on Debian Trixie VM.
+- `Projects/*/custom.txt`: Project-specific media and serial mapping definitions.
 
 ## Important note
 
