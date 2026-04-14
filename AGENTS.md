@@ -8,6 +8,12 @@ This repository contains legacy FORTH block-media workflows. Treat it as statefu
 - `make run` - launch saneForth runtime
 - `make connect` - launch saneForth with Volatco connection checklist
 
+## Branch policy
+
+- `main` is the historical baseline and should remain unchanged by modernization work.
+- `chore/minimal-modernization` is the long-lived branch for modern docs/tooling/agent workflow.
+- Do not merge modernization branch changes into `main` unless explicitly requested by maintainers.
+
 ## Required safety rules
 
 - Do not mass-edit or format `af3/sfux/*` media files.

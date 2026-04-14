@@ -2,6 +2,12 @@
 
 The most powerful machine client that connects over serial to a Volatco board. This branch is for `sF386/UNIX`.
 
+## Branch policy
+
+- `main` is kept as the historical/legacy baseline.
+- `chore/minimal-modernization` is the ongoing modern tooling/docs branch.
+- Modernization work is intended to stay on the modernization branch unless maintainers explicitly choose otherwise.
+
 ## Running the aF3 system in Debian Linux
 
 ### Preparation
