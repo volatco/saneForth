@@ -1,0 +1,23 @@
+# Default behavior for line-oriented text files.
+*.md text eol=lf
+*.txt text eol=lf
+*.sh text eol=lf
+*.desktop text eol=lf
+*.profile text eol=lf
+
+# Legacy media and runtime artifacts: always binary.
+af3/sfux/Project binary
+af3/sfux/Projback binary
+af3/sfux/4THDISK binary
+af3/sfux/4THBACK binary
+af3/sfux/4THD-* binary
+af3/sfux/OBJ-* binary
+af3/sfux/*.blk binary
+af3/sfux/crud binary
+af3/sfux/scratch binary
+af3/sfux/sF0n-UNIX-910325 binary
+af3/sfux/sf6a0.exe binary
+
+Projects/*/*.src binary
+Projects/*/OBJ-* binary
+Projects/*/conc binary
