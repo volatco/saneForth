@@ -25,7 +25,7 @@ echo "Step 3: Volatco-specific expectations"
 cat <<'EOF'
 Expected saneForth sequence and outputs:
   SERIAL LOAD    -> may first mention wrong default port
-  0 PORT         -> should print: Using port /dev/ttyUSB0 ok
+  1 PORT         -> Port_B rigs should print: Using port /dev/ttyUSB1 ok
   PLUG           -> should print: ok
   reset J4+space -> should print: G144A12 polyFORTH development system
 EOF

@@ -15,7 +15,7 @@
    - `DISKS` (verify Volatco paths)
    - optional: `&INCLUDE ../Projects/VOLATCO/custom.txt`
    - `SERIAL LOAD`
-   - `0 PORT` (or `1 PORT`)
+   - `1 PORT` (Port_B bench)
    - `PLUG`
    - Enter + reset + Space
 3. On banner: `20 DRIVE HI`

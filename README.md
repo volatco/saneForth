@@ -10,7 +10,7 @@ The most powerful machine client that connects over serial to a Volatco board. T
    - `HI`
    - `DISKS` (confirm `../projects/VOLATCO/...`)
    - `SERIAL LOAD`
-   - `0 PORT` or `1 PORT`
+   - `1 PORT` (Port_B bench)
    - `PLUG`, then Enter + reset + Space
 4. On `G144A12 polyFORTH development system`, run `20 DRIVE HI`.
 
@@ -50,7 +50,7 @@ Ubuntu/Debian:
 1. Connect board + serial adapter and power on.
 2. Run `make doctor` and confirm no hard blockers.
 3. Run `make connect`.
-4. In saneForth follow prompts: `HI`, `DISKS`, `SERIAL LOAD`, `0 PORT`/`1 PORT`, `PLUG`, reset, space.
+4. In saneForth follow prompts: `HI`, `DISKS`, `SERIAL LOAD`, `1 PORT` (Port_B bench), `PLUG`, reset, space.
 5. On banner, run `20 DRIVE HI`.
 
 ### Manual installation and launch
@@ -136,7 +136,7 @@ Use this if you prefer launching from a dedicated Konsole profile.
 7. Run `chmod 755 af3/sfux/afk`.
 8. Open a new Konsole window with that profile.
 9. At `hi`, type `HI`.
-10. Continue with the fast path below (`DISKS`, `SERIAL LOAD`, `0 PORT`/`1 PORT`, `PLUG`).
+10. Continue with the fast path below (`DISKS`, `SERIAL LOAD`, `1 PORT`, `PLUG`).
 
 ### Fast path: IDE to Volatco board
 
@@ -147,7 +147,7 @@ Use this sequence when working from an IDE-integrated terminal:
 3. Type `DISKS` and verify paths point to `../projects/VOLATCO/...`.
 4. If `DISKS` is not using Volatco files, run `&INCLUDE ../Projects/VOLATCO/custom.txt` and then run `DISKS` again.
 5. Type `SERIAL LOAD`.
-6. If needed, force the USB index with `0 PORT` (for `/dev/ttyUSB0`) or `1 PORT` (for `/dev/ttyUSB1`).
+6. On the Port_B bench, use `1 PORT` (for `/dev/ttyUSB1`).
 7. Type `PLUG`.
 8. Press Enter, briefly reset the board on `J4` (or reset button), then press Space.
 9. When `G144A12 polyFORTH development system` appears, type `20 DRIVE HI`.
@@ -156,7 +156,7 @@ If there is no target banner:
 
 1. Run `id` and confirm your user is in `dialout`.
 2. Check current serial assignment with `dmesg | grep tty`.
-3. Retry `SERIAL LOAD`, `0 PORT`, `PLUG`, then reset + space timing.
+3. Retry `SERIAL LOAD`, `1 PORT`, `PLUG`, then reset + space timing.
 
 ### Legacy polyForth sequence (manual)
 

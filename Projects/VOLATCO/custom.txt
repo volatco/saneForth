@@ -3,8 +3,9 @@
 
 EMPTY  ( 4800 CONSTANT PROJECT)
    : PROJDIR ( - a n)   S" ../projects/VOLATCO/" ;
-   ( VOLATCO #001)
-     CREATE A-COM  6 ,  CREATE A-BPS 921600 ,
+   ( VOLATCO #001, Port_B-only bench setup)
+   ( Keep both channels mapped to COM 7 so legacy code paths stay consistent.)
+     CREATE A-COM  7 ,  CREATE A-BPS 921600 ,
      CREATE B-COM  7 ,  CREATE B-BPS 921600 ,
 FORTH GILD
 
