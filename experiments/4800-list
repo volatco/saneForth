@@ -1,7 +1,7 @@
 4800
- 0 ( Critical Volatco Plan #1 - LED blink 1 Hz )
+ 0 ( Critical Volatco Plan #1 - Volatco LED blink 1-SEC )
  1 DECIMAL
- 2 7 CONSTANT LED-PIN
+ 2 7 CONSTANT LED-PIN   ( Volatco J13-7 GPIO map )
  3 : INIT-LED  LED-PIN GPIO-OUTPUT ;
  4 : LED-ON    LED-PIN GPIO-HIGH ;
  5 : LED-OFF   LED-PIN GPIO-LOW ;
