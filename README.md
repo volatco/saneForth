@@ -28,6 +28,12 @@ Ubuntu/Debian:
 - There is a Debian Trixie loader note in `af3/WARNING` about a possible `.bss` mapping hole on at least one VM setup.
 - USB serial device assignment may vary (`ttyUSB0` vs `ttyUSB1`), which can require local port adjustments.
 
+### Quick commands (recommended)
+
+- `make check-env` verifies serial visibility, `dialout`, and required i386 packages.
+- `make run` launches saneForth from `af3/sfux`.
+- `make connect` launches saneForth and prints the Volatco integration checklist.
+
 ### Installation
 
 Clone the repo into your home directory:
