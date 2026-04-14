@@ -20,6 +20,13 @@ Ubuntu/Debian:
 
 `sudo apt install libncurses6:i386 libc6:i386 libstdc++6:i386`
 
+### Known constraints
+
+- `sf6a0.exe` is a 32-bit i386 Linux binary and requires 32-bit userspace libraries.
+- This repo uses FORTH block media (`.src`, `.blk`, `Project`, `4THDISK`) as primary source artifacts.
+- There is a Debian Trixie loader note in `af3/WARNING` about a possible `.bss` mapping hole on at least one VM setup.
+- USB serial device assignment may vary (`ttyUSB0` vs `ttyUSB1`), which can require local port adjustments.
+
 ### Installation
 
 Clone the repo into your home directory:
@@ -94,7 +101,7 @@ WHO sF on x86.  ok
 
 In order for a Volatco computer to respond correctly to a common Debian desktop, a special terminal needs to be formatted.
 
-1. Open konsole: "Settings..Profile", create a new profile called `saneForth-GA144A12`. Add the initial directory to your machine's path plus: `../af3/sfux`; and set the command with this path as: `af3/sfux/afk sf6a0.exe`. Save the profile as default as this will be the easist way to spawn a new terminal. Set "Initial terminal size" to 80 columns by 25 rows. Deselect "Start in the same directory as current session". Save the profile.
+1. Open konsole: "Settings..Create New Profile...", of one called `saneForth-GA144A12`. Add the initial directory to your machine's path plus: `../af3/sfux`; and set the command with this path as: `af3/sfux/afk sf6a0.exe`. Save the profile as default as this will be the easist way to spawn a new terminal. Set "Initial terminal size" to 80 columns by 25 rows. Deselect "Start in the same directory as current session". Save the profile.
 2. Run `chmod 755 afk`.
 3. Open a new konsole window.
 4. When you see `hi`, type `HI`.
@@ -108,6 +115,26 @@ In order for a Volatco computer to respond correctly to a common Debian desktop,
 11. Type `20 DRIVE HI` to load the system.
 11. Type `ctrl-X` to leave polyForth. If you don't know, type `WHO`.
 12. Type `EMPTY` to logout.
+
+### Fast path: IDE to Volatco board
+
+Use this sequence when working from an IDE-integrated terminal:
+
+1. Open terminal in `af3/sfux` and run `./afk sf6a0.exe`.
+2. At `hi`, type `HI`.
+3. Type `DISKS` and verify paths point to `../projects/VOLATCO/...`.
+4. If `DISKS` is not using Volatco files, run `&INCLUDE ../Projects/VOLATCO/custom.txt` and then run `DISKS` again.
+5. Type `SERIAL LOAD`.
+6. If needed, force the USB index with `0 PORT` (for `/dev/ttyUSB0`) or `1 PORT` (for `/dev/ttyUSB1`).
+7. Type `PLUG`.
+8. Press Enter, briefly reset the board on `J4` (or reset button), then press Space.
+9. When `G144A12 polyFORTH development system` appears, type `20 DRIVE HI`.
+
+If there is no target banner:
+
+1. Run `id` and confirm your user is in `dialout`.
+2. Check current serial assignment with `dmesg | grep tty`.
+3. Retry `SERIAL LOAD`, `0 PORT`, `PLUG`, then reset + space timing.
 
 ### Building an executable
 
