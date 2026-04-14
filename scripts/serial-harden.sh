@@ -11,6 +11,7 @@ echo "This will configure:"
 echo "- ModemManager ignore for Volatco Port_B FTDI adapter"
 echo "- FTDI latency_timer=1 for the adapter"
 echo "- Stable alias: /dev/volatco-port-b"
+echo "- Stable alias: /dev/volatco-runtime"
 echo
 
 if [[ ! -f "$RULE_SRC" ]]; then
@@ -33,7 +34,7 @@ echo "  sudo udevadm trigger --subsystem-match=tty --subsystem-match=usb-serial"
 echo "  sudo systemctl restart ModemManager"
 echo
 echo "Then verify:"
-echo "  ls -l /dev/volatco-port-b /dev/serial/by-id/*VOLATCO_Port_B*"
+echo "  ls -l /dev/volatco-port-b /dev/volatco-runtime /dev/serial/by-id/*VOLATCO_Port_B*"
 echo "  cat /sys/bus/usb-serial/devices/ttyUSB*/latency_timer"
 echo
 echo "Note: this script prints safe apply steps and does not modify /etc by itself."

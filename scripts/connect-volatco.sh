@@ -7,6 +7,74 @@ DETECTION_REASON="default fallback"
 TTY_LIST=""
 BY_ID_LIST=""
 tty_idx=""
+RUNTIME_TTY="${VOLATCO_RUNTIME_TTY:-ttyUSB1}"
+RUNTIME_DEV="/dev/${RUNTIME_TTY}"
+
+resolve_volatco_tty_path() {
+  if [[ -e /dev/volatco-port-b ]]; then
+    readlink -f /dev/volatco-port-b 2>/dev/null || true
+    return
+  fi
+
+  if compgen -G "/dev/serial/by-id/*VOLATCO_Port_B*" > /dev/null; then
+    readlink -f /dev/serial/by-id/*VOLATCO_Port_B* 2>/dev/null | head -n1 || true
+    return
+  fi
+
+  if compgen -G "/dev/serial/by-id/*VOLATCO*" > /dev/null; then
+    readlink -f /dev/serial/by-id/*VOLATCO* 2>/dev/null | head -n1 || true
+    return
+  fi
+}
+
+heal_runtime_tty_mapping() {
+  local target_tty=""
+  local current_target=""
+
+  target_tty="$(resolve_volatco_tty_path)"
+  if [[ -z "${target_tty:-}" || ! -e "${target_tty:-}" ]]; then
+    return
+  fi
+
+  current_target="$(readlink -f "$RUNTIME_DEV" 2>/dev/null || true)"
+  if [[ "$current_target" == "$target_tty" ]]; then
+    return
+  fi
+
+  # Do not clobber a kernel-created character device (real ttyUSB node).
+  if [[ -e "$RUNTIME_DEV" && ! -L "$RUNTIME_DEV" ]]; then
+    echo "Runtime mapping note: $RUNTIME_DEV exists as a real tty node; skipping auto-remap."
+    return
+  fi
+
+  if ln -sfn "$target_tty" "$RUNTIME_DEV" 2>/dev/null; then
+    echo "Runtime mapping healed: $RUNTIME_DEV -> $target_tty"
+    return
+  fi
+
+  if sudo ln -sfn "$target_tty" "$RUNTIME_DEV" 2>/dev/null; then
+    echo "Runtime mapping healed with sudo: $RUNTIME_DEV -> $target_tty"
+    return
+  fi
+
+  echo "Runtime mapping warning: could not map $RUNTIME_DEV -> $target_tty automatically."
+  echo "Try: sudo ln -sfn $target_tty $RUNTIME_DEV"
+}
+
+heal_runtime_tty_mapping
+
+# Manual override for unstable ttyUSB numbering.
+# Example: VOLATCO_PORT_IDX=0 make connect
+if [[ -n "${VOLATCO_PORT_IDX:-}" ]]; then
+  if [[ "${VOLATCO_PORT_IDX}" =~ ^[0-9]+$ ]]; then
+    PREFERRED_PORT_CMD="${VOLATCO_PORT_IDX} PORT"
+    DETECTION_REASON="manual override VOLATCO_PORT_IDX=${VOLATCO_PORT_IDX}"
+    tty_idx="${VOLATCO_PORT_IDX}"
+  else
+    echo "Invalid VOLATCO_PORT_IDX='${VOLATCO_PORT_IDX}' (must be numeric)."
+    exit 1
+  fi
+fi
 
 set_preferred_port_from_path() {
   local tty_path="$1"
@@ -21,7 +89,7 @@ set_preferred_port_from_path() {
 }
 
 # Priority 1: stable alias created by udev hardening.
-if [[ -e /dev/volatco-port-b ]]; then
+if [[ -z "$tty_idx" && -e /dev/volatco-port-b ]]; then
   resolved="$(readlink -f /dev/volatco-port-b 2>/dev/null || true)"
   if [[ -n "${resolved:-}" ]]; then
     set_preferred_port_from_path "$resolved" "stable alias /dev/volatco-port-b" || true
@@ -100,6 +168,7 @@ If it does not connect:
 EOF
 
 echo "Autodetected runtime port: ${PREFERRED_PORT_CMD} (${DETECTION_REASON})"
+echo "Legacy runtime device expected by media: ${RUNTIME_DEV}"
 
 if [[ -n "$TTY_LIST" ]]; then
   echo "Detected serial device(s): $TTY_LIST"
