@@ -1,0 +1,11 @@
+# Volatco Port_B FTDI hardening:
+# - Ignore in ModemManager
+# - Set low latency timer for cleaner high-baud behavior
+# - Create stable alias /dev/volatco-port-b
+#
+# Adapter identity for this bench:
+#   idVendor=0403, idProduct=6001, serial=CAR00-0001B
+
+ACTION=="add|change", SUBSYSTEM=="tty", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6001", ATTRS{serial}=="CAR00-0001B", ENV{ID_MM_DEVICE_IGNORE}="1", ENV{ID_MM_PORT_IGNORE}="1", SYMLINK+="volatco-port-b"
+
+ACTION=="add|change", SUBSYSTEM=="usb-serial", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6001", ATTRS{serial}=="CAR00-0001B", ATTR{latency_timer}="1"

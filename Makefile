@@ -1,6 +1,6 @@
 SHELL := /usr/bin/env bash
 
-.PHONY: check-env doctor run connect
+.PHONY: check-env doctor run connect serial-harden
 
 check-env:
 	./scripts/check-env.sh
@@ -13,3 +13,6 @@ run:
 
 connect:
 	./scripts/connect-volatco.sh
+
+serial-harden:
+	./scripts/serial-harden.sh

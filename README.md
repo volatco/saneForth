@@ -20,6 +20,7 @@ Available helper commands:
 - `make doctor` runs diagnostics before connection attempts.
 - `make run` launches saneForth from `af3/sfux`.
 - `make connect` launches saneForth and prints the Volatco connection guide.
+- `make serial-harden` prints exact udev hardening steps for Port_B FTDI.
 
 ### Preparation
 
@@ -52,6 +53,27 @@ Ubuntu/Debian:
 3. Run `make connect`.
 4. In saneForth follow prompts: `HI`, `DISKS`, `SERIAL LOAD`, `1 PORT` (Port_B bench), `PLUG`, reset, space.
 5. On banner, run `20 DRIVE HI`.
+
+### Serial hardening for Port_B FTDI (recommended)
+
+To reduce garbled serial behavior on this bench:
+
+1. Run `make serial-harden`.
+2. Apply the printed sudo commands to install udev rules.
+3. Re-plug adapter or trigger udev as printed.
+4. Verify stable alias `/dev/volatco-port-b` and low latency timer.
+
+### Known Good Configuration (Port_B bench)
+
+This setup has been verified working:
+
+- Adapter identity: `/dev/serial/by-id/usb-Cartheur_VOLATCO_Port_B_CAR00-0001B-if00-port0`
+- Runtime port selection: `SERIAL LOAD` then `1 PORT`
+- udev hardening active: `/dev/volatco-port-b -> ttyUSB1`
+- udev hardening active: `ID_MM_DEVICE_IGNORE=1`
+- udev hardening active: `ID_MM_PORT_IGNORE=1`
+- udev hardening active: `/sys/bus/usb-serial/devices/ttyUSB1/latency_timer = 1`
+- Successful target banner after reset + space: `pF/G144.03b1 12/21/18`
 
 ### Manual installation and launch
 
