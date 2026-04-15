@@ -8,7 +8,7 @@ PODMAN_POD_NAME ?= volatco-sf-pod
 PODMAN_POD_CONTAINER ?= volatco-sf-dev
 
 .PHONY: check-env doctor run connect serial-harden podman-build podman-check \
-	podman-pod-build podman-pod-up podman-pod-shell podman-pod-run \
+	podman-pod-build podman-pod-up podman-pod-shell podman-pod-bash podman-pod-run \
 	podman-pod-connect podman-pod-down
 
 check-env:
@@ -57,12 +57,17 @@ podman-pod-build:
 
 podman-pod-up:
 	@HOST_REPO_ROOT="$$(git rev-parse --show-toplevel 2>/dev/null || pwd)"; \
-	DEV_ARG=""; \
+	DEV_ARGS=""; \
+	SEEN_DEVS=" "; \
 	BYID_ARG=""; \
-	if [ -e "$(PODMAN_TTYUSB)" ]; then \
-		DEV_ARG="--device $(PODMAN_TTYUSB):$(PODMAN_TTYUSB)"; \
-	else \
-		echo "warning: $(PODMAN_TTYUSB) not found; starting pod container without ttyUSB mapping"; \
+	for dev in "$(PODMAN_TTYUSB)" /dev/ttyUSB0 /dev/ttyUSB1; do \
+		if [ -e "$$dev" ] && [ "$${SEEN_DEVS#* $$dev }" = "$$SEEN_DEVS" ]; then \
+			DEV_ARGS="$$DEV_ARGS --device $$dev:$$dev"; \
+			SEEN_DEVS="$$SEEN_DEVS$$dev "; \
+		fi; \
+	done; \
+	if [ -z "$$DEV_ARGS" ]; then \
+		echo "warning: no ttyUSB devices found; starting pod container without ttyUSB mapping"; \
 	fi; \
 	if [ -d "$(PODMAN_SERIAL_BY_ID)" ]; then \
 		BYID_ARG="--volume $(PODMAN_SERIAL_BY_ID):$(PODMAN_SERIAL_BY_ID):ro"; \
@@ -77,7 +82,7 @@ podman-pod-up:
 			--name $(PODMAN_POD_CONTAINER) \
 			--pod $(PODMAN_POD_NAME) \
 			--group-add keep-groups \
-			$$DEV_ARG \
+			$$DEV_ARGS \
 			$$BYID_ARG \
 			-v "$$HOST_REPO_ROOT":/workspace:Z \
 			-w /workspace \
@@ -85,13 +90,16 @@ podman-pod-up:
 	fi
 
 podman-pod-shell:
-	podman exec -it $(PODMAN_POD_CONTAINER) bash
+	podman exec -it -w /workspace $(PODMAN_POD_CONTAINER) /workspace/scripts/run-sf.sh
+
+podman-pod-bash:
+	podman exec -it -w /workspace/af3/sfux $(PODMAN_POD_CONTAINER) bash
 
 podman-pod-run:
-	podman exec -it $(PODMAN_POD_CONTAINER) ./scripts/run-sf.sh
+	podman exec -it -w /workspace $(PODMAN_POD_CONTAINER) /workspace/scripts/run-sf.sh
 
 podman-pod-connect:
-	podman exec -it $(PODMAN_POD_CONTAINER) ./scripts/connect-volatco.sh
+	podman exec -it -w /workspace $(PODMAN_POD_CONTAINER) /workspace/scripts/connect-volatco.sh
 
 podman-pod-down:
 	-podman rm -f $(PODMAN_POD_CONTAINER)

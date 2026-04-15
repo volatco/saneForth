@@ -63,6 +63,20 @@ Open interactive shell in container:
 make podman-pod-shell
 ```
 
+This starts saneForth immediately (`/workspace/scripts/run-sf.sh`).
+
+If you want a plain bash shell in `/workspace/af3/sfux`:
+
+```bash
+make podman-pod-bash
+```
+
+From there you can launch manually:
+
+```bash
+./afk sf6a0.exe
+```
+
 Inside container, run:
 
 ```bash
@@ -93,3 +107,4 @@ Notes:
   `make podman-check PODMAN_TTYUSB=/dev/ttyUSB1 PODMAN_SERIAL_BY_ID=/dev/serial/by-id`
 - Pod target overrides, for example:
   `make podman-pod-up PODMAN_TTYUSB=/dev/ttyUSB1 PODMAN_POD_NAME=volatco-dev`
+- `make podman-pod-up` auto-maps detected `/dev/ttyUSB0` and `/dev/ttyUSB1` when present.
