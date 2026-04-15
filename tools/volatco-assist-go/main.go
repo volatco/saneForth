@@ -11,6 +11,7 @@ import (
 	"regexp"
 	"sort"
 	"strings"
+	"syscall"
 	"time"
 )
 
@@ -40,6 +41,7 @@ type report struct {
 
 func main() {
 	jsonOut := flag.Bool("json", false, "emit JSON report")
+	containerFlag := flag.Bool("container", false, "container mode (relax host package/group checks)")
 	flag.Parse()
 
 	start := time.Now()
@@ -48,12 +50,14 @@ func main() {
 		fail("could not detect repo root: %v", err)
 	}
 
+	containerMode := *containerFlag || detectContainer()
+
 	var checks []checkResult
 	checks = append(checks, checkRuntime(repoRoot))
-	checks = append(checks, checkDialout())
+	checks = append(checks, checkDialout(containerMode))
 	checks = append(checks, checkTTYUSB())
 	checks = append(checks, checkSerialByID())
-	checks = append(checks, checkI386Packages()...)
+	checks = append(checks, checkI386Packages(containerMode)...)
 
 	portCmd, reason := detectPreferredPort()
 	r := report{
@@ -106,7 +110,7 @@ func checkRuntime(root string) checkResult {
 	return checkResult{Name: "runtime binary", Status: statusFail, Details: fmt.Sprintf("missing: %s", p)}
 }
 
-func checkDialout() checkResult {
+func checkDialout(containerMode bool) checkResult {
 	out, err := run("id", "-nG")
 	if err != nil {
 		return checkResult{Name: "dialout group", Status: statusWarn, Details: "unable to query groups via id -nG"}
@@ -116,6 +120,12 @@ func checkDialout() checkResult {
 		if g == "dialout" {
 			return checkResult{Name: "dialout group", Status: statusPass, Details: "user is in dialout"}
 		}
+	}
+	if dev, ok := firstReadableWritableTTYUSB(); ok {
+		return checkResult{Name: "dialout group", Status: statusPass, Details: fmt.Sprintf("user is not in dialout, but read/write access to %s is available", dev)}
+	}
+	if containerMode {
+		return checkResult{Name: "dialout group", Status: statusWarn, Details: "user is not in dialout (container mode)"}
 	}
 	return checkResult{Name: "dialout group", Status: statusFail, Details: "user is not in dialout"}
 }
@@ -160,7 +170,7 @@ func checkSerialByID() checkResult {
 	return checkResult{Name: "serial by-id", Status: statusPass, Details: strings.Join(paths, ", ")}
 }
 
-func checkI386Packages() []checkResult {
+func checkI386Packages(containerMode bool) []checkResult {
 	pkgs := []string{"libncurses6:i386", "libc6:i386", "libstdc++6:i386"}
 	if _, err := exec.LookPath("dpkg-query"); err != nil {
 		return []checkResult{{
@@ -173,10 +183,16 @@ func checkI386Packages() []checkResult {
 	for _, pkg := range pkgs {
 		statusOut, err := run("dpkg-query", "-W", "-f=${Status}\\n", pkg)
 		if err != nil || !strings.Contains(statusOut, "install ok installed") {
+			status := statusFail
+			details := fmt.Sprintf("missing: %s", pkg)
+			if containerMode {
+				status = statusWarn
+				details = fmt.Sprintf("missing in container image: %s", pkg)
+			}
 			out = append(out, checkResult{
 				Name:    "i386 package",
-				Status:  statusFail,
-				Details: fmt.Sprintf("missing: %s", pkg),
+				Status:  status,
+				Details: details,
 			})
 			continue
 		}
@@ -187,6 +203,27 @@ func checkI386Packages() []checkResult {
 		})
 	}
 	return out
+}
+
+func firstReadableWritableTTYUSB() (string, bool) {
+	devs, _ := filepath.Glob("/dev/ttyUSB*")
+	sort.Strings(devs)
+	for _, d := range devs {
+		if err := syscall.Access(d, 6); err == nil {
+			return d, true
+		}
+	}
+	return "", false
+}
+
+func detectContainer() bool {
+	if _, err := os.Stat("/run/.containerenv"); err == nil {
+		return true
+	}
+	if _, err := os.Stat("/.dockerenv"); err == nil {
+		return true
+	}
+	return false
 }
 
 func detectPreferredPort() (string, string) {

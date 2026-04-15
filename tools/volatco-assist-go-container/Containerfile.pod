@@ -1,0 +1,37 @@
+# syntax=docker/dockerfile:1
+
+FROM docker.io/library/golang:1.22-bookworm AS build
+WORKDIR /src
+
+COPY tools/volatco-assist-go/go.mod ./tools/volatco-assist-go/go.mod
+RUN --mount=type=cache,target=/go/pkg/mod \
+    cd tools/volatco-assist-go && go mod download
+
+COPY tools/volatco-assist-go ./tools/volatco-assist-go
+RUN --mount=type=cache,target=/go/pkg/mod \
+    --mount=type=cache,target=/root/.cache/go-build \
+    cd tools/volatco-assist-go && CGO_ENABLED=0 GOOS=linux go build -trimpath -ldflags='-s -w' -o /out/volatco-assist-go .
+
+FROM docker.io/library/debian:bookworm-slim
+WORKDIR /workspace
+
+ARG LOCAL_UID=1000
+ARG LOCAL_GID=1000
+
+RUN dpkg --add-architecture i386 \
+    && apt-get update \
+    && apt-get install -y --no-install-recommends \
+      bash \
+      ca-certificates \
+      procps \
+      libc6:i386 \
+      libstdc++6:i386 \
+      libncurses6:i386 \
+    && rm -rf /var/lib/apt/lists/* \
+    && groupadd --gid "${LOCAL_GID}" app \
+    && useradd --uid "${LOCAL_UID}" --gid "${LOCAL_GID}" --create-home --shell /bin/bash app
+
+COPY --from=build /out/volatco-assist-go /usr/local/bin/volatco-assist-go
+
+USER app
+CMD ["sleep", "infinity"]

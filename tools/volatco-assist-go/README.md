@@ -27,6 +27,16 @@ JSON output:
 go run ./tools/volatco-assist-go --json
 ```
 
+Container mode:
+
+```bash
+go run ./tools/volatco-assist-go --container --json
+```
+
+Notes:
+- Container environments are auto-detected (`/.dockerenv` or `/run/.containerenv`), so `--container` is usually optional.
+- In container mode, missing i386 host packages are reported as `WARN` instead of `FAIL`.
+
 Manual port override:
 
 ```bash
