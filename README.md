@@ -29,7 +29,9 @@ _Leveled power over period_
           -> USB-C
   - `lsusb`
   - Shows two FTDI chips present.
-  - Started 1315.
+  - Started 1315. Ran continuously until 1600
+
+_After one-hour warmup_
 
 * Stabalized power at 1.7855 VDC, Max - 1.7862, Min - 1.7849 VDC | 7e-4 and 6e-4 respecitively
 * Quasi-stable power: 4.5454 VDC: Max - 4.5716, Min - 4.4829 VDC | 262e-4 and 625e-4 respectively
