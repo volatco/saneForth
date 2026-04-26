@@ -21,4 +21,17 @@ A couple of notes to avoid frustration, suggest the following procedure -- more 
 
 ## Test results
 
-* Power-on-hold. Started 1315.
+* Power-on-hold
+  - USB Hub
+  - VOL01 -> USB-C
+          -> USB-C
+  - `lsusb`
+  - Shows two FTDI chips present.
+  - Started 1315.
+* Power level (before connecing to VOL00)
+  - Scope volatge test
+  - J1 volatges: 
+  - J7,J8 voltages: 
+*  arrayForth3
+  - Install process and guide
+* aF3 -> GA144-pF
