@@ -1,7 +1,0 @@
-// The contents of this file describes how to provision pF on a Volatco
-
-HOST LOAD
-TALK
-1665 LOAD
-SERIAL LOAD PLUG
-<SPACEBAR>
