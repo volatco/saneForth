@@ -18,3 +18,7 @@ A couple of notes to avoid frustration, suggest the following procedure -- more 
 9. Say: `AFORTH`
 10. Say: `1585 LOAD ` and look at pin `715.17`.
 11. Say: `1585 LIST  4 T` and edit the first value for different period, then `1585 LOAD` to activate it.
+
+## Test results
+
+* Power-on-hold. Started 1315.
