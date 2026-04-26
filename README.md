@@ -97,6 +97,8 @@ WHO
 WHO sF on x86.  ok
 ```
 
+If you receive the error: `Unable to open mass storage; errno=-1`, ensure the executable has its project files included in the same folder. 
+
 ### Connecting to Volatco to develop in polyForth
 
 In order for a Volatco computer to respond correctly to a common Debian desktop, a special terminal needs to be formatted.
