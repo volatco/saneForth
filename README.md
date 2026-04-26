@@ -32,6 +32,9 @@ A couple of notes to avoid frustration, suggest the following procedure -- more 
   - Scope volatge test
   - J1 volatges: 
   - J7,J8 voltages: 
+* Program FTDI chips
+  - xml file
+  - FTDI writing app
 *  arrayForth3
   - Install process and guide
 * aF3 -> GA144-pF
