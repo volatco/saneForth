@@ -33,10 +33,10 @@ _Leveled power over period_
 
 _After one-hour warmup_
 
-* Stabalized power at 1.7855 VDC: Max - 1.7862, Min - 1.7849 VDC | 7e-4 and 6e-4 respecitively
+* Stabalized power: 1.7855 VDC: Max - 1.7862, Min - 1.7849 VDC | 7e-4 and 6e-4 respecitively
 * Quasi-stable power: 4.5454 VDC: Max - 4.5716, Min - 4.4829 VDC | 262e-4 and 625e-4 respectively
 
-![onstate](/images/leveled_power.jpg)
+![onstate](/images/vol01_onstate.jpg)
 
 * Power level (before connecing to VOL00)
   - Scope volatge test
