@@ -97,7 +97,12 @@ WHO
 WHO sF on x86.  ok
 ```
 
-If you receive the error: `Unable to open mass storage; errno=-1`, ensure the executable has its project files included in the same folder. 
+If you receive the error: `Unable to open mass storage; errno=-1`, ensure the executable has its project files included in the same folder. At a minimum you will need:
+
+* 4THDISK
+* pFDISK.blk
+* <MORE>
+* sf6x.exe
 
 ### Connecting to Volatco to develop in polyForth
 
