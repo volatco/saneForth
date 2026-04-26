@@ -1,0 +1,78 @@
+WORK DONE ON THIS PROJECT
+============================
+March 2026
+Provisioning and work with Volatco
+
+25.03.2026
+1227: Set a single COM to B and was able to raise the port via SERIAL LOAD. So far, 12 SELFTEST fails but it so does when connected to the EVB instead.
+02.04.2026
+1701: Volatco works, but no evidence of working SRAM.
+04.04.2026
+1606: Created boards 02, 03, and 04. Repeat of tests gives same results.
+06.04.2026
+1338: A suggestion has been floated that there could be a power supply issue with the board. First test is to switch power from COM driving J8 to COM driving J6 (from HOST to SERIAL).
+1341: Tx from Volatco was connected to GND on the COM. Retesting.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
