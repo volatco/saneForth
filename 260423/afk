@@ -1,0 +1,8 @@
+#!/bin/bash
+#
+# afk xxx runs executable xxx in a konsole
+#
+svstty=$(stty -g)
+stty -icanon -echo -istrip -opost -onlcr -echoe -echok min 1
+./$1
+stty $svstty

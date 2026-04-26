@@ -101,7 +101,10 @@ If you receive the error: `Unable to open mass storage; errno=-1`, ensure the ex
 
 * 4THDISK
 * pFDISK.blk
-* <MORE>
+* OBJ-AF3
+* OBJ-REF
+* crud
+* scratch
 * sf6x.exe
 
 ### Connecting to Volatco to develop in polyForth
