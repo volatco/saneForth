@@ -21,6 +21,8 @@ A couple of notes to avoid frustration, suggest the following procedure -- more 
 
 ## Test results
 
+_Leveled power over period_
+
 * Power-on-hold
   - USB Hub
   - VOL01 -> USB-C
@@ -28,10 +30,16 @@ A couple of notes to avoid frustration, suggest the following procedure -- more 
   - `lsusb`
   - Shows two FTDI chips present.
   - Started 1315.
+
+* Stabalized power at 1.7855 VDC, Max - 1.7862, Min - 1.7849 VDC | 7e-4 and 6e-4 respecitively
+* Quasi-stable power: 4.5454 VDC: Max - 4.5716, Min - 4.4829 VDC | 262e-4 and 625e-4 respectively
+
+![onstate](/images/leveled_power.jpg)
+
 * Power level (before connecing to VOL00)
   - Scope volatge test
-  - J1 volatges: 
-  - J7,J8 voltages: 
+  - J1:1P8, J7, J8: Absolute percentage differences: 0.0392% and 0.0336%.
+  - J1:5P0: Absolute percentage differences: 0.5765% and 1.3751%.
 * Program FTDI chips
   - xml file
   - FTDI writing app
