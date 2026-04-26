@@ -44,7 +44,7 @@ _After one-hour warmup_
   - J1:5P0: Absolute percentage differences: 0.5765% and 1.3751%.
 * Program FTDI chips
   - xml file: FTDI folder, FT_PROG (only available in anyform on Windows)
-  - FTDI writing app - shared as this is an _exact_ version
+  - FTDI writing app - shared as this is an _exact_ version - requires Framework 4.0.30319.
 *  arrayForth3
   - Install process and guide
 * aF3 -> GA144-pF
