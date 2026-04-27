@@ -8,12 +8,12 @@ A couple of notes to avoid frustration, suggest the following procedure -- more 
 
 1. plug both USB-C in, A first B second so that A is 0 and B is 1. `DONE`
 2. Start aF3.  say `HI`  `AFORTH`  to get it all loaded. `DONE`
-3. Insert no-boot jumper on board.
-4. Say: `0 SELFTEST`  (key in SUDO pasword when asked) and let it run to OK completion.
+3. Insert no-boot jumper on board. `DONE`
+4. Say: `0 SELFTEST`  (key in SUDO pasword when asked) and let it run to OK completion. [busy never changes. falied once]
 5. Say:  `HOST LOAD TALK`
 6. Pull no-boot jumper
 6. Say: `RESET`
-7. Say: `SERIAL LOAD PLUG` and hit space, see `hi`.
+7. Say: `SERIAL LOAD PLUG` and hit space, see `hi`. [hangs connected to ttyUSB1]
 8. Say: `20 DRIVE  HI` (loading code from PC disk)
 9. Say: `AFORTH`
 10. Say: `1585 LOAD ` and look at pin `715.17`.
