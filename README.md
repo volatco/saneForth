@@ -45,6 +45,8 @@ _After one-hour warmup_
 * Program FTDI chips
   - xml file: FTDI folder, FT_PROG (only available in anyform on Windows)
   - FTDI writing app - shared as this is an _exact_ version - requires Framework 4.0.30319.
+* Volatco preparation from factory
+  - Place jumpers: J2, J3, J5:1-2; `NO-BOOT`
 *  arrayForth3
   - Install process and guide (Greg)
 * aF3 -> GA144-pF
