@@ -6,8 +6,8 @@ This is the development branch.
 
 A couple of notes to avoid frustration, suggest the following procedure -- more steps than abs necessary but should work every time.
 
-1. plug both USB-C in, A first B second so that A is 0 and B is 1.
-2. Start aF3.  say `HI`  `AFORTH`  to get it all loaded.
+1. plug both USB-C in, A first B second so that A is 0 and B is 1. `DONE`
+2. Start aF3.  say `HI`  `AFORTH`  to get it all loaded. `DONE`
 3. Insert no-boot jumper on board.
 4. Say: `0 SELFTEST`  (key in SUDO pasword when asked) and let it run to OK completion.
 5. Say:  `HOST LOAD TALK`
@@ -46,5 +46,5 @@ _After one-hour warmup_
   - xml file: FTDI folder, FT_PROG (only available in anyform on Windows)
   - FTDI writing app - shared as this is an _exact_ version - requires Framework 4.0.30319.
 *  arrayForth3
-  - Install process and guide
+  - Install process and guide (Greg)
 * aF3 -> GA144-pF
