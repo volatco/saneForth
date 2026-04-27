@@ -46,7 +46,7 @@ _After one-hour warmup_
   - Program FTDI chips: Xml templates for Port A and Port B
   - FT_PROG v2.8.2: Requires Framework 4.0.30319 and this _exact_ version
 * Volatco VOL00 preparation from factory
-  - Place jumpers: J2, J3, J5:1-2; `NO-BOOT`
+  - Place jumpers: J2, J3, J5:1-2 (black); `NO-BOOT` (red)
   - Connect to VOL01
 *  arrayForth3
   - Install process and guide (Greg)
