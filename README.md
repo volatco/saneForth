@@ -40,13 +40,14 @@ _After one-hour warmup_
 
 * Power level (before connecing to VOL00)
   - Scope volatge test
-  - J1:1P8, J7, J8: Absolute percentage differences: 0.0392% and 0.0336%.
-  - J1:5P0: Absolute percentage differences: 0.5765% and 1.3751%.
-* Program FTDI chips
-  - xml file: FTDI folder, FT_PROG (only available in anyform on Windows)
-  - FTDI writing app - shared as this is an _exact_ version - requires Framework 4.0.30319.
-* Volatco preparation from factory
+  - J1:1P8, J7, J8: Absolute percentage differences: 0.0392% and 0.0336%
+  - J1:5P0: Absolute percentage differences: 0.5765% and 1.3751%
+* Volatco VOL01 preparation from factory
+  - Program FTDI chips: Xml templates for Port A and Port B
+  - FT_PROG v2.8.2: Requires Framework 4.0.30319 and this _exact_ version
+* Volatco VOL00 preparation from factory
   - Place jumpers: J2, J3, J5:1-2; `NO-BOOT`
+  - Connect to VOL01
 *  arrayForth3
   - Install process and guide (Greg)
 * aF3 -> GA144-pF
