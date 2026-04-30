@@ -16,8 +16,8 @@ A couple of notes to avoid frustration, suggest the following procedure -- more 
 7. Say: `SERIAL LOAD PLUG` and hit space, see `hi`. [hangs connected to ttyUSB1]
 8. Say: `20 DRIVE  HI` (loading code from PC disk)
 9. Say: `AFORTH`
-10. Say: `1585 LOAD ` and look at pin `715.17`.
-11. Say: `1585 LIST  4 T` and edit the first value for different period, then `1585 LOAD` to activate it.
+10. Say: `1584 LOAD ` and look at pin `715.17`.
+11. Say: `1584 LIST  4 T` and edit the first value for different period, then `1584 LOAD` to activate it.
 
 ## Test results
 
