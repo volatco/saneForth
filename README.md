@@ -51,3 +51,6 @@ _After one-hour warmup_
 *  arrayForth3
   - Install process and guide (Greg)
 * aF3 -> GA144-pF
+
+30.04.2026
+1409: Thusfar not able to connect serial to VOL00 (any series) in Linux client. Can do so with dual DSD devices to VOL-00a-02 and can work the pin.
